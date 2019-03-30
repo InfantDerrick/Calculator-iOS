@@ -38,6 +38,10 @@ class ViewController: UIViewController {
             }else if(sender.tag == 12){
                 numberOnScreen = numberOnScreen * numberOnScreen
                 label.text = String(numberOnScreen)
+            }else if sender.tag == 18 {
+                if(!(label.text?.contains("."))!){
+                    label.text = label.text! + "."
+                }
             }else{
                 if !newStoredNumber{
                     storedNumber = numberOnScreen
@@ -53,9 +57,13 @@ class ViewController: UIViewController {
             newStoredNumber = false
             label.text = ""
         }else if sender.tag == 17{
-            label.text = String(storedNumber)
-            numberOnScreen = storedNumber
-            newStoredNumber = false
+            if newStoredNumber == false{
+                label.text = String(numberOnScreen)
+            }else{
+                label.text = String(storedNumber)
+                numberOnScreen = storedNumber
+                newStoredNumber = false
+            }
         }
     }
     override func viewDidLoad() {
